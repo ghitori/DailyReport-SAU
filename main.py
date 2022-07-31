@@ -8,7 +8,7 @@ file = 'config.ini'
 con = configparser.ConfigParser()
 con.read(file, encoding='utf-8')
 body = dict(con.items('Info'))
-cookies = dict(con.items('Cookies'))
+# cookies = dict(con.items('Cookies'))
 temp = dict(con.items('Temp'))['temp']
 temp = temp.split(',')
 pushkey = dict(con.items('Push'))['pushkey']
@@ -23,7 +23,7 @@ if not body['tiwen2']:
 
 # 发送日报信息
 url = "https://yqdwxx.sau.edu.cn/"
-res = req.sreq( f'{url}ADDJKTB', "", 'json', body, cookies)
+res = req.sreq( f'{url}ADDJKTB', "", 'json', body, '')
 
 #推送通知
 pushbody = f'学工号: {body["userid"]}\n姓名: {body["xingming"]}\n手机号: {body["shoujihao"]}\n单位院系: {body["dwyx"]}\n当前所在省份: {body["shengfen"]}\n所在城市: {body["chengshi"]}\n14日内是否有中高风险地区旅居史、接触史: {body["ljsjcs"]}\n是否按照要求向学校、社区及时上报: {body["sqsb"]}\n是否离沈: {body["sfls"]}\n离沈去向: {body["lsqx"]}\n是否隔离观察: {body["sfgl"]}\n是否身体有疑似典型症状: {body["sfys"]}\n是否发热: {body["sffr"]}\n其他信息: {body["other"]}\n体温(早): {body["tiwen"]}\n体温(中): {body["tiwen1"]}\n体温(晚): {body["tiwen2"]}'
