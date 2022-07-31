@@ -36,4 +36,3 @@ if code == 200:
         req.pushdeer('', pushkey, "疫情填报失败！", f"**请检查配置并手动填报！**\n\n**服务器返回信息：{res.text}**\n\n**填报信息**\n---\n```\n{pushbody}\n```")
         exit()
 req.pushdeer('', pushkey, "疫情填报失败！服务器连接错误！", "**请检查服务器地址！**")
-
