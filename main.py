@@ -39,6 +39,6 @@ if code == 200:
 else:
         pushmessage = ["疫情填报失败！服务器连接错误！", "**请检查服务器地址！**"]
         exit_code = -1
-print(pushmessage[0],'\n',res.text)
+print(pushmessage[0],'\n',res.text,'\n','具体信息请查看pushdeer内推送')
 req.pushdeer('', pushkey, pushmessage[0], pushmessage[1])
 exit(exit_code)
