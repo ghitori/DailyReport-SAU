@@ -24,7 +24,10 @@ jobs:
     - name: Install Required
       run: |
         pip install requests
-        
+    
+    - name: Make Config
+      run: |
+        echo "${{ secrets.CONFIG }}"
     - name: Report
       run: |
         python main.py
