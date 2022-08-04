@@ -27,7 +27,7 @@ jobs:
     
     - name: Make Config
       run: |
-        echo "${{ secrets.CONFIG }}"
+        echo "${{ secrets.CONFIG }}" > config.ini
     - name: Report
       run: |
         python main.py
