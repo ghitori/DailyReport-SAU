@@ -20,7 +20,8 @@
    4. 打开`Actions`选项卡，并同意启用`Workflows`![image](https://user-images.githubusercontent.com/29966961/182974440-b6c46243-8214-4b66-9893-80b7f3b7a8b3.png)
    5. 依次点击`Daily Report`-`Run workflow`-`Run workflow`测试填报是否正常![image](https://user-images.githubusercontent.com/29966961/182975156-50c6d79d-fb72-4c8f-bcd7-ed3a1f426b65.png)
    6. 若出现异常，请确保`pushkey`正确填写，并前往`PushDeer`检查填报内容
-   7. Github Actions会自动在每日的`凌晨00：05`自动运行
+   7. Github Actions会自动在每日的`UTC+8:00 00：05`自动运行
+   **注意！Github Actions可能存在一定延迟(大概几十分钟后开始运行），如果有极其准确的时间要求，请自建服务器或使用腾讯云函数**
 ###  
 - **如果遇到任何问题，可以通过issue向我提出**
 ### 本人不对使用此脚本造成的任何后果负责！！！
