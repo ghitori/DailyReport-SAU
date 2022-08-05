@@ -5,12 +5,11 @@ name: Daily Report
 
 on:
   schedule:
-    - cron: '* * * * *'
+    - cron: '34 */8 * * *'
   workflow_dispatch:
 
 jobs:
-  build:
-
+  invoke:
     runs-on: ubuntu-latest
 
     steps:
