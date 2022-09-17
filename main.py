@@ -32,13 +32,13 @@ code = res.status_code
 if code == 200:
         resbody = json.loads(res.text)
         if resbody['status'] == 'OK':
-                pushmessage = ["疫情填报成功！datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")", f"**填报信息**\n---\n```\n{pushbody}\n```"]
+                pushmessage = ["疫情填报成功！" + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), f"**填报信息**\n---\n```\n{pushbody}\n```"]
                 exit_code = 0
         else:
-                pushmessage = ["疫情填报失败！datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")", f"**请检查配置并手动填报！**\n\n**服务器返回信息：{res.text}**\n\n**填报信息**\n---\n```\n{pushbody}\n```"]
+                pushmessage = ["疫情填报失败！" + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), f"**请检查配置并手动填报！**\n\n**服务器返回信息：{res.text}**\n\n**填报信息**\n---\n```\n{pushbody}\n```"]
                 exit_code = -1
 else:
-        pushmessage = ["疫情填报失败！服务器连接错误！datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")", "**请检查服务器地址！**"]
+        pushmessage = ["疫情填报失败！服务器连接错误！" + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), "**请检查服务器地址！**"]
         exit_code = -1
 print(pushmessage[0],'\n',res.text,'\n','具体信息请查看pushdeer内推送')
 req.pushdeer('', pushkey, pushmessage[0], pushmessage[1])
