@@ -1,35 +1,36 @@
 import requests
 
 
-
-def sreq( url, headers, type, data, cookie):
-    if headers :
-        if type == "get" :
-            r = requests.get(url , headers=headers, cookies=cookie)
-        elif type == "json" :
-            r = requests.post(url, json=data , headers=headers, cookies=cookie)
-        elif type == "data" :
-            r = requests.post(url, data=data , headers=headers, cookies=cookie)
-    else :
-        if type == "get" :
+def sreq(url, headers, type, data, cookie):
+    if headers:
+        if type == "get":
+            r = requests.get(url, headers=headers, cookies=cookie)
+        elif type == "json":
+            r = requests.post(url, json=data, headers=headers, cookies=cookie)
+        elif type == "data":
+            r = requests.post(url, data=data, headers=headers, cookies=cookie)
+    else:
+        if type == "get":
             r = requests.get(url, cookies=cookie)
-        elif type == "json" :
+        elif type == "json":
             r = requests.post(url, json=data, cookies=cookie)
-        elif type == "data" :
+        elif type == "data":
             r = requests.post(url, data=data, cookies=cookie)
     return r
 
-def pushdeer( server, pushkey, text, desp):
+
+def pushdeer(server, pushkey, text, desp):
     if server == "":
         server = "https://api2.pushdeer.com/"
-    elif "https://" not in server :
-        if "http://" not in server :
+    elif "https://" not in server:
+        if "http://" not in server:
             server = "https://" + server
-    if server[-1] != "/" :
+    if server[-1] != "/":
         server = server + "/"
-    message = {'pushkey' : pushkey,'text' : text,'desp' : desp}
-    r = sreq( server + "message/push", "", "json", message,"")
+    message = {'pushkey': pushkey, 'text': text, 'desp': desp}
+    r = sreq(server + "message/push", "", "json", message, "")
     return r.status_code
+
 
 def wxpusher(apptoken, content, summary, uids):
     url = "http://wxpusher.zjiecode.com/api/send/message"
@@ -52,4 +53,3 @@ def wxpusher(apptoken, content, summary, uids):
     r = requests.post(url, headers=header, json=j)
 
     return r
-
