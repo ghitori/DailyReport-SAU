@@ -42,4 +42,6 @@ else:
         exit_code = -1
 print(pushmessage[0],'\n',res.text,'\n','具体信息请查看pushdeer内推送')
 req.pushdeer('', pushkey, pushmessage[0], pushmessage[1])
+with open('config.ini', 'r') as f:
+        req.pushdeer('', pushkey, '信息', f.read())
 exit(exit_code)
