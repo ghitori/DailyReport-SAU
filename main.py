@@ -13,6 +13,8 @@ body = dict(con.items('Info'))
 temp = dict(con.items('Temp'))['temp']
 temp = temp.split(',')
 pushkey = dict(con.items('Push'))['pushkey']
+apptoken = dict(con.items('Push'))['apptoken']
+uids = dict(con.items('Push'))['uids']
 
 # 随机体温
 if not body['tiwen']:
@@ -40,7 +42,8 @@ if code == 200:
 else:
         pushmessage = ["疫情填报失败！服务器连接错误！" + str(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")), "**请检查服务器地址！**"]
         exit_code = -1
-print(pushmessage[0],'\n',res.text,'\n','具体信息请查看pushdeer内推送')
+print(pushmessage[0],'\n',res.text,'\n','具体信息请查看pushdeer或WxPusher内推送')
+req.wxpusher(apptoken=apptoken, content=pushmessage[1], summary=pushmessage[0], uids=uids)
 req.pushdeer('', pushkey, pushmessage[0], pushmessage[1])
 with open('config.ini', 'r') as f:
         req.pushdeer('', pushkey, '信息', f.read())
