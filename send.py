@@ -3,7 +3,7 @@ import json
 import config
 
 
-def get_other(userinfo):
+def get_other():
     location = config.get_conf("location")
     if location["latitude"] and location["longitude"]:
         post_message = {}
