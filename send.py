@@ -3,12 +3,12 @@ import json
 import config
 
 
-def get_other(conf):
+def get_other(userinfo):
     location = config.get_conf("location")
     if location["latitude"] and location["longitude"]:
         post_message = {}
-        post_message.update(conf["userinfo"])
-        post_message.update(conf["location"])
+        post_message.update(config.get_conf("userinfo"))
+        post_message.update(location)
         if not post_message["latitude"]:
             post_message["latitude"] = 15
     else:

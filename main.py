@@ -7,7 +7,7 @@ import config
 def make_report():
     for table in report_list:
         report.update(config.get_conf(table))
-    other = send.get_other(config.get_conf("location"))
+    other = send.get_other()
     if other:
         report.update(other)
         global location_statue
