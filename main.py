@@ -46,7 +46,7 @@ def leave_shen_set():
         report["sfls"] = "否"
     else:
         report["sfls"] = "是"
-        city = config.get_conf("others")
+        city = config.get_conf("other")
         if city["lsqx"]:
             report["lsqx"] = city
         else:
